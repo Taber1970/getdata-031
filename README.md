@@ -32,12 +32,9 @@ y       = rbind(y_train, y_test)
 subject = rbind(subject_train, subject_test)
 
 
-## 3) I used grep with the "features" data frame to determine what columns where "Mean" columns and what columns were 
-## "std" or standard deviation columns.  Then I added them togeather.  Finally I created a new data frame, which was a
-## copy of x, but with only the desired columns.
+## 3) I used grep with the "features" data frame to determine what columns where "Mean" columns and what columns were "std" or standard deviation columns.  Then I added them togeather.  Finally I created a new data frame, which was a copy of x, but with only the desired columns.
 
-### Extracts only the measurements on the mean and standard deviation 
-### for each measurement into "mean_std_x".
+### Extracts only the measurements on the mean and standard deviation for each measurement into "mean_std_x".
 
 mean_cols = grep("mean", features$V2, ignore.case = FALSE)
 
@@ -48,9 +45,7 @@ mean_std_cols = c(mean_cols, std_cols)
 mean_std_x = x[,mean_std_cols]
 
 
-## 4) I used the join function to create a data frame which held one line for each measurement in x.  And that line went from containing a number for the activity, as 
-## in "y", to containing a text description of that activity, as in "activities".  I could have added the text version of the activities to the main data frame at 
-## this point, but then it would have been hard to add the english column names later.
+## 4) I used the join function to create a data frame which held one line for each measurement in x.  And that line went from containing a number for the activity, as in "y", to containing a text description of that activity, as in "activities".  I could have added the text version of the activities to the main data frame at this point, but then it would have been hard to add the english column names later.
 
 ### Use descriptive activity names to name the activities in the data set
 
@@ -64,9 +59,7 @@ mean_std_features = features[mean_std_cols,]
 
 names(mean_std_x) = mean_std_features$V2
 
-## 6) Since I now have a data object with the english text activities and one with subject data for each observation, I could add them to the main data frame, 
-## but it is easier to get the mean of each value in the data for each combination of activities and subjects by keepign them seperate and usign them in the aggregate
-## function to get the final required tidy data.
+## 6) Since I now have a data object with the english text activities and one with subject data for each observation, I could add them to the main data frame, but it is easier to get the mean of each value in the data for each combination of activities and subjects by keeping them seperate and usign them in the aggregate function to get the final required tidy data.
 
 ### From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
