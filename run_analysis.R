@@ -1,5 +1,5 @@
 
-# These commented give an example of how to get the data from the internet
+# These comments give an example of how to get the data from the internet
 # into a state where the rest of the script can be run.
 # url = "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 # download = download.file(url, destfile = "data.zip")
